@@ -10,7 +10,12 @@ body {
   margin: 30px;
   background-color: black;
 }
-
+.start {
+  width: 150px;
+  height: 100px;
+  border-radius: 50%;
+  
+}
 .button {
   /* border: 1px outset black; */
   /* background-color: aqua; */
@@ -20,23 +25,23 @@ body {
 /* button colors */
 #red {
   background-color: red;
+  margin: 10px;
 }
 #blue {
   background-color: blue;
+  margin: 10px;
 }
 #yellow {
   background-color: yellow;
+  margin: 10px;
+
 }
 #green {
   background-color: green;
+  margin: 10px;
 }
 /* button alignment */
-.topButts {
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-}
-.bottomButts {
+.startButt, .topButts, .bottomButts {
   display: flex; 
   justify-content: center;
   align-items: center;
