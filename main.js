@@ -18,19 +18,7 @@ const gameButtons = document.getElementsByClassName('button');
 
 // writing a function that toggles the color of a particular button that's chosen
 // chatgpt ref: javascript toggle color of button automatically
-const changeColor = function() {
-  const colors = [redButton.id, 'white'];
-  let currentColorIndex = 0;
 
-  const toggleColors = function() {
-    redButton.style.backgroundColor = colors[currentColorIndex];
-    currentColorIndex = (currentColorIndex + 1) % colors.length;
-  }
-  const interval = setInterval(toggleColors, 150);
-  setTimeout(() => {
-    clearInterval(interval);
-  }, 500)
-}
 // function that changes backgroundColor to 'white' when mousedown
 
 const lightOn = function(event) {
@@ -63,13 +51,77 @@ const userLightWork = function() {
     gameButtons[i].addEventListener('mouseup', lightOff);
   }  
 }
+// writing a function that toggles the color of a particular button that's chosen
+// chatgpt ref: javascript toggle color of button automatically
+const changeColor = function(assigned) {
+  const colors = [assigned.id, 'white'];
+  // console.log(assigned.id);
+  let currentColorIndex = 0;
+  // console.log(assigned);
+
+  const toggleColors = function() {
+    // console.log(assigned)
+    assigned.style.backgroundColor = colors[currentColorIndex];
+    currentColorIndex = (currentColorIndex + 1) % colors.length;
+  }
+  const interval = setInterval(toggleColors, 150);
+  setTimeout(() => {
+    clearInterval(interval);
+  }, 500)
+}
+
+// randomise a sequence! (and eventually work your way to 3 rounds of the game/sequences)
+// const randomOrder = function() {
+//   const emptyArray = []
+//  const randomNaur = Math.floor(Math.random()*4)
+//  console.log(randomNaur)
+//  console.log(gameButtons[randomNaur])
+// console.log(gameButtons[randomNaur].innerHTML)
+// emptyArray.push(gameButtons[randomNaur])
+// console.log(emptyArray)
+// }
+
+// rewrite the randomise function
+let roundCounter = 3;
+let seqArray = [];
+const randomOrder2 = function(roundCounter) {
+  for (let i=0; i < roundCounter; i++) {
+    let randomNaur = Math.floor(Math.random()*4);
+    // console.log(randomNaur)
+    seqArray.push(randomNaur);
+    // shld i put the color change function here?
+  }
+return seqArray;
+}
 
 
+const gameSequence = function(array) {
+  for (let i=0; i < array.length; i++) {
+    // console.log(gameButtons[i])
+    // need a PAUSE/LAG between the changing of colors !
+    changeColor(gameButtons[i]);
+  }
+}
+// testing
 
-
+// randomOrder2(roundCounter);
+// console.log(seqArray)
+// gameSequence(seqArray)
 
 // run functions here 
 userLightWork();
-console.log(typeof redButton.id)
+// console.log(typeof redButton.id)
 // console.log(colors);
-// changeColor()
+
+// this works?!
+// changeColor(gameButtons[randomNaur]);
+
+
+// changeColor(blueButton);
+// changeColor(yellowButton);
+// changeColor(greenButton);
+// console.log(gameButtons[0])
+// console.log(gameButtons[1])
+// console.log(gameButtons[2])
+// console.log(gameButtons[3])
+// randomOrder()
