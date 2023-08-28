@@ -55,7 +55,7 @@ const userLightWork = function() {
 // chatgpt ref: javascript toggle color of button automatically
 const changeColor = function(assigned) {
   const colors = [assigned.id, 'white'];
-  // console.log(assigned.id);
+  console.log(assigned.id);
   let currentColorIndex = 0;
   // console.log(assigned);
 
@@ -67,7 +67,7 @@ const changeColor = function(assigned) {
   const interval = setInterval(toggleColors, 150);
   setTimeout(() => {
     clearInterval(interval);
-  }, 500)
+  }, 450)
 }
 
 // randomise a sequence! (and eventually work your way to 3 rounds of the game/sequences)
@@ -82,31 +82,35 @@ const changeColor = function(assigned) {
 // }
 
 // rewrite the randomise function
-let roundCounter = 3;
-let seqArray = [];
-const randomOrder2 = function(roundCounter) {
-  for (let i=0; i < roundCounter; i++) {
+let currentRound = 3;
+let sequence = [];
+const randomOrder2 = function(round) {
+  for (let i=0; i < round; i++) {
     let randomNaur = Math.floor(Math.random()*4);
     // console.log(randomNaur)
-    seqArray.push(randomNaur);
+    sequence.push(randomNaur);
     // shld i put the color change function here?
   }
-return seqArray;
+return sequence;
 }
 
 
 const gameSequence = function(array) {
-  for (let i=0; i < array.length; i++) {
+  for (let i=0; i<array.length; i++) {
+    const gameButtonIndex = array[i];
+    changeColor(gameButtons[gameButtonIndex])
+  }
+  }
+    
+
     // console.log(gameButtons[i])
     // need a PAUSE/LAG between the changing of colors !
-    changeColor(gameButtons[i]);
-  }
-}
+
 // testing
 
-// randomOrder2(roundCounter);
-// console.log(seqArray)
-// gameSequence(seqArray)
+// randomOrder2(currentRound)
+// console.log(sequence)
+// gameSequence(sequence)
 
 // run functions here 
 userLightWork();
@@ -120,7 +124,7 @@ userLightWork();
 // changeColor(blueButton);
 // changeColor(yellowButton);
 // changeColor(greenButton);
-// console.log(gameButtons[0])
+// console.log(gameButtons[0].id)
 // console.log(gameButtons[1])
 // console.log(gameButtons[2])
 // console.log(gameButtons[3])
