@@ -182,11 +182,41 @@ gameElements.forEach(function(element) {
 //   // console.log(sequence);
 // }
 
-// trial game function
-const trialGame = function() {
+// trial game function. is this the function to run for each new round ?
+// const trialGame = function() {
+//   randomOrder(currentRound);
+//   gameSequenceWDelay(sequence, delayMilliseconds);
+//   let playerClicked = []
+//   const gameElements = document.querySelectorAll('.button')
+// gameElements.forEach(function(element) {
+//   element.addEventListener('click', function(event) {
+//     const clickedElement = event.target;
+//     playerClicked.push(clickedElement)
+//     console.log("clicked", clickedElement);
+//     console.log("playerclicked", playerClicked);
+//   console.log(checkingSequence[0])
+//   console.log(playerClicked[0])
+//   // console.log(checkingSequence[0] === playerClicked[0])
+//   // console.log(CompUserSame(checkingSequence, playerClicked));
+//   if (CompUserSame(checkingSequence, playerClicked)) {
+//     currentRound +=1
+//   } 
+//   // what to put as an else function.....
+//   console.log(currentRound)
+//   // if (checkingSequence.id === playerClicked.id) {
+//   //   currentRound += 1
+//   //   console.log(currentRound)
+//   // } else { 
+//   //   return}
+//   // console.log(playerClicked)
+//   })
+// })
+// }
+let playerClicked = [];
+const gameRound = function() {
   randomOrder(currentRound);
   gameSequenceWDelay(sequence, delayMilliseconds);
-  let playerClicked = []
+  // let playerClicked = []
   const gameElements = document.querySelectorAll('.button')
 gameElements.forEach(function(element) {
   element.addEventListener('click', function(event) {
@@ -196,18 +226,35 @@ gameElements.forEach(function(element) {
     console.log("playerclicked", playerClicked);
   console.log(checkingSequence[0])
   console.log(playerClicked[0])
-  console.log(checkingSequence[0] === playerClicked[0])
-  // if (checkingSequence.id === playerClicked.id) {
-  //   currentRound += 1
-  //   console.log(currentRound)
-  // } else { 
-  //   return}
-  // console.log(playerClicked)
-  })
+})
 })
 }
+//  function to check conditional 
+const CompUserSame = function(compInput, userInput) {
+  if (compInput.length !== userInput.length) {
+    return false;
+  }
+  for (let i=0; i < compInput.length; i++) {
+    if (compInput[i] !== userInput[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+// try to make things work....review all the functions u built
+const letsPlay = function() {
+  gameRound();
+  if  (CompUserSame(checkingSequence, playerClicked)) {
+        currentRound +=1
+        gameRound()
+      } 
+  else {
+    gameRound()
+  }
+}
 // testing
-trialGame();
+// letsPlay();
+// trialGame();
 // console.log(checkingSequence);
 // console.log(playerClicked)
 // console.log(checkingSequence === playerClicked)
