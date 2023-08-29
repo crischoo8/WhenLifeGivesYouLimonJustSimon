@@ -105,17 +105,32 @@ return checkingSequence;
 
 
 // write function to accept user input and push into an array for comparison
-const playerClicked = []
-const gameElements = document.querySelectorAll('.button')
+// rewrite this function....
+// let playerClicked = []
+// const gameElements = document.querySelectorAll('.button')
+// gameElements.forEach(function(element) {
+//   element.addEventListener('click', function(event) {
+//     const clickedElement = event.target;
+//     playerClicked.push(clickedElement)
+//     console.log("clicked", clickedElement);
+//     console.log("playerclicked", playerClicked);
+    
+//   })
+// })
+// let playerClicked = []
+const playerInput = function() {
+  let playerClicked = []
+  const gameElements = document.querySelectorAll('.button')
 gameElements.forEach(function(element) {
   element.addEventListener('click', function(event) {
     const clickedElement = event.target;
     playerClicked.push(clickedElement)
-    console.log(clickedElement);
-  })
-  return playerClicked
-})
-console.log(playerClicked);
+    console.log("clicked", clickedElement);
+    console.log("playerclicked", playerClicked);
+  }) 
+}) 
+}
+// console.log("playerclicked", playerClicked);
 
 
 
@@ -161,24 +176,42 @@ console.log(playerClicked);
 // first line: randomOrder()
 // second line: gameSequenceWDelay()
 
-const playGame = function() {
-  randomOrder(currentRound);
-  gameSequenceWDelay(sequence, delayMilliseconds);
-  console.log(sequence);
-}
+// const playGame = function() {
+//   randomOrder(currentRound);
+//   gameSequenceWDelay(sequence, delayMilliseconds);
+//   // console.log(sequence);
+// }
 
 // trial game function
 const trialGame = function() {
-  playGame()
-  if (sequence === playerClicked) {
-    console.log('u won!')
-  } else  {
-    return;
-  }
+  randomOrder(currentRound);
+  gameSequenceWDelay(sequence, delayMilliseconds);
+  let playerClicked = []
+  const gameElements = document.querySelectorAll('.button')
+gameElements.forEach(function(element) {
+  element.addEventListener('click', function(event) {
+    const clickedElement = event.target;
+    playerClicked.push(clickedElement)
+    console.log("clicked", clickedElement);
+    console.log("playerclicked", playerClicked);
+  console.log(checkingSequence[0])
+  console.log(playerClicked[0])
+  console.log(checkingSequence[0] === playerClicked[0])
+  // if (checkingSequence.id === playerClicked.id) {
+  //   currentRound += 1
+  //   console.log(currentRound)
+  // } else { 
+  //   return}
+  // console.log(playerClicked)
+  })
+})
 }
 // testing
 trialGame();
-console.log(checkingSequence);
+// console.log(checkingSequence);
+// console.log(playerClicked)
+// console.log(checkingSequence === playerClicked)
+// console.log(playerClicked)
 // randomOrder(currentRound)
 // console.log(sequence)
 // gameSequenceWDelay(sequence, delayMilliseconds)
