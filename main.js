@@ -53,15 +53,16 @@ const userLightWork = function() {
 }
 // writing a function that toggles the color of a particular button that's chosen
 // chatgpt ref: javascript toggle color of button automatically
-const changeColor = function(assigned) {
-  const colors = [assigned.id, 'white'];
-  console.log(assigned.id);
+const changeColor = function(assignedButt) {
+  // const colorOption = assigned.id;
+  const colors = [assignedButt.id, 'white'];
+  console.log(assignedButt.id);
   let currentColorIndex = 0;
   // console.log(assigned);
 
   const toggleColors = function() {
     // console.log(assigned)
-    assigned.style.backgroundColor = colors[currentColorIndex];
+    assignedButt.style.backgroundColor = colors[currentColorIndex];
     currentColorIndex = (currentColorIndex + 1) % colors.length;
   }
   const interval = setInterval(toggleColors, 150);
@@ -69,6 +70,11 @@ const changeColor = function(assigned) {
     clearInterval(interval);
   }, 450)
 }
+
+// const intervalGame = setInterval(changeColor, 500);
+//   setTimeout(() => {
+//     clearInterval(intervalGame);
+//   }, 3000)
 
 // randomise a sequence! (and eventually work your way to 3 rounds of the game/sequences)
 // const randomOrder = function() {
@@ -84,7 +90,7 @@ const changeColor = function(assigned) {
 // rewrite the randomise function
 let currentRound = 3;
 let sequence = [];
-const randomOrder2 = function(round) {
+const randomOrder = function(round) {
   for (let i=0; i < round; i++) {
     let randomNaur = Math.floor(Math.random()*4);
     // console.log(randomNaur)
@@ -95,21 +101,48 @@ return sequence;
 }
 
 
-const gameSequence = function(array) {
+// original gameSequence
+// const gameSequence = function(array) {
+//   for (let i=0; i<array.length; i++) {
+//     const gameButtonIndex = array[i];
+//     changeColor(gameButtons[gameButtonIndex])
+//   }
+//   }
+
+// gameSequenceWDelay
+ const gameSequenceWDelay = function(array, delay) {
   for (let i=0; i<array.length; i++) {
-    const gameButtonIndex = array[i];
-    changeColor(gameButtons[gameButtonIndex])
-  }
-  }
-    
+        setTimeout(function() {
+          const gameButtonIndex = array[i];
+        changeColor(gameButtons[gameButtonIndex])
+        }, i*delay)
+      }
+  };
+
+// 3rd try for gameSequence
+// const gameSequence2 = function(array,delay) {
+//   setTimeout(function() {
+//     for (let i=0; i<array.length; i++) {
+//           const gameButtonIndex = array[i];
+//           changeColor(gameButtons[gameButtonIndex])
+//         }
+//   }, delay)
+// }
+
+  const delayMilliseconds = 2000
+ 
 
     // console.log(gameButtons[i])
     // need a PAUSE/LAG between the changing of colors !
 
 // testing
 
-// randomOrder2(currentRound)
+// randomOrder(currentRound)
 // console.log(sequence)
+// gameSequenceWDelay(sequence, delayMilliseconds)
+
+// gameSequence2(sequence, delayMilliseconds)
+
 // gameSequence(sequence)
 
 // run functions here 
@@ -127,5 +160,5 @@ userLightWork();
 // console.log(gameButtons[0].id)
 // console.log(gameButtons[1])
 // console.log(gameButtons[2])
-// console.log(gameButtons[3])
+console.log(gameButtons[3])
 // randomOrder()
