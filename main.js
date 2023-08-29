@@ -88,17 +88,35 @@ const changeColor = function(assignedButt) {
 // }
 
 // rewrite the randomise function
-let currentRound = 3;
+let currentRound = 1;
 let sequence = [];
+let checkingSequence = [];
 const randomOrder = function(round) {
   for (let i=0; i < round; i++) {
     let randomNaur = Math.floor(Math.random()*4);
     // console.log(randomNaur)
     sequence.push(randomNaur);
+    checkingSequence.push(gameButtons[randomNaur])
     // shld i put the color change function here?
   }
 return sequence;
+return checkingSequence;
 }
+
+
+// write function to accept user input and push into an array for comparison
+const playerClicked = []
+const gameElements = document.querySelectorAll('.button')
+gameElements.forEach(function(element) {
+  element.addEventListener('click', function(event) {
+    const clickedElement = event.target;
+    playerClicked.push(clickedElement)
+    console.log(clickedElement);
+  })
+  return playerClicked
+})
+console.log(playerClicked);
+
 
 
 // original gameSequence
@@ -118,7 +136,7 @@ return sequence;
         }, i*delay)
       }
   };
-
+  const delayMilliseconds = 2000
 // 3rd try for gameSequence
 // const gameSequence2 = function(array,delay) {
 //   setTimeout(function() {
@@ -129,14 +147,38 @@ return sequence;
 //   }, delay)
 // }
 
-  const delayMilliseconds = 2000
+  
  
 
     // console.log(gameButtons[i])
     // need a PAUSE/LAG between the changing of colors !
 
-// testing
 
+  
+
+  // create playAgain()/playGame() function 
+// e.g. 
+// first line: randomOrder()
+// second line: gameSequenceWDelay()
+
+const playGame = function() {
+  randomOrder(currentRound);
+  gameSequenceWDelay(sequence, delayMilliseconds);
+  console.log(sequence);
+}
+
+// trial game function
+const trialGame = function() {
+  playGame()
+  if (sequence === playerClicked) {
+    console.log('u won!')
+  } else  {
+    return;
+  }
+}
+// testing
+trialGame();
+console.log(checkingSequence);
 // randomOrder(currentRound)
 // console.log(sequence)
 // gameSequenceWDelay(sequence, delayMilliseconds)
@@ -147,6 +189,11 @@ return sequence;
 
 // run functions here 
 userLightWork();
+// randomOrder(currentRound)
+// console.log(sequence)
+// gameSequenceWDelay(sequence, delayMilliseconds)
+
+
 // console.log(typeof redButton.id)
 // console.log(colors);
 
@@ -160,5 +207,5 @@ userLightWork();
 // console.log(gameButtons[0].id)
 // console.log(gameButtons[1])
 // console.log(gameButtons[2])
-console.log(gameButtons[3])
+// console.log(gameButtons[3])
 // randomOrder()
