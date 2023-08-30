@@ -106,13 +106,14 @@ const stopToggle = function() {
 
 startButton.addEventListener('click', function(e) {
   currentRound = 1;
+  startButton.innerHTML = currentRound;
   playGame();
 
 
 })
 
   
-    
+  
 
 
 
@@ -135,6 +136,7 @@ for (let i=0; i<clickables.length; i++) {
         checkingSequence = [];
         sequence = [];
         playGame();
+        startButton.innerHTML = 1;
         return 
       }
       if (playerClicked.length === checkingSequence.length) {
@@ -145,6 +147,7 @@ for (let i=0; i<clickables.length; i++) {
         checkingSequence = [];
         sequence = [];
         playGame();
+        startButton.innerHTML = currentRound;
         return;
 
       }
