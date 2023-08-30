@@ -1,14 +1,8 @@
-// import './style.css'
-
-// make Object containing Audio required
-// const sounds = {
-//   red: 'https://freesound.org/people/NoiseCollector/sounds/43793',
-// }
 
 // access HTML elements/ define them here!
 const startButton = document.getElementById('start');
 const clickables = document.getElementsByClassName('button');
-
+const audioPack = document.getElementsByClassName('tone');
 
 let isPlaying = false;
 let currentRound = 0;
@@ -53,6 +47,10 @@ const changeColor = function(assignedButt) {
 }
 
 
+const playAudio = function(file) {
+  file.play();
+}
+
 // part 1 of playGame()
 
 const randomOrder = function(round) {
@@ -66,25 +64,27 @@ return checkingSequence;
 }
 
 
+
 // gameSequenceWDelay, plays the sequence with an interval between each key of a particular sequence
 // part 2 of playGame()
 const delayMilliseconds = 2000
  const gameSequenceWDelay = function(array, delay) {
+  
   for (let i=0; i<array.length; i++) {
         setTimeout(function() {
           const gameButtonIndex = array[i];
-        changeColor(clickables[gameButtonIndex])
+        changeColor(clickables[gameButtonIndex]), playAudio(audioPack[gameButtonIndex])
         }, i*delay)
       }
   };
 
-const toggleIsPlaying = function() {
-   isPlaying = true;
-}
-const toggleTimeout = setTimeout(toggleIsPlaying, 2000);
-const stopToggle = function() {
-  clearTimeout(toggleTimeout);
-}
+// const toggleIsPlaying = function() {
+//    isPlaying = true;
+// }
+// const toggleTimeout = setTimeout(toggleIsPlaying, 2000);
+// const stopToggle = function() {
+//   clearTimeout(toggleTimeout);
+// }
   // function to initiate/flash a random sequence
   const playGame = function() {
     randomOrder(currentRound);
