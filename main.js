@@ -9,7 +9,7 @@
 const startButton = document.getElementById('start');
 const clickables = document.getElementsByClassName('button');
 
-let pCount = 0;
+
 let isPlaying = false;
 let currentRound = 0;
 let sequence = [];
@@ -99,17 +99,7 @@ const stopToggle = function() {
 
 
 //  function to check conditional 
-const CompUserSame = function(compInput, userInput) {
-  if (compInput.length !== userInput.length) {
-    return false;
-  }
-  for (let i=0; i < compInput.length; i++) {
-    if (compInput[i] !== userInput[i]) {
-      return false;
-    }
-  }
-  return true;
-}
+
 
 
 
@@ -117,6 +107,7 @@ const CompUserSame = function(compInput, userInput) {
 startButton.addEventListener('click', function(e) {
   currentRound = 1;
   playGame();
+
 
 })
 
@@ -131,10 +122,32 @@ for (let i=0; i<clickables.length; i++) {
       if (isPlaying === false) {
         console.log('haha')
         return;
-      } else if (isPlaying === true) {
-        console.log('hi')
+      } 
+      
+      if (isPlaying === true) {
+        console.log('hi');
         playerClicked.push(clickedElement);
-        console.log(playerClicked)
+      if (playerClicked[playerClicked.length - 1] !== checkingSequence[playerClicked.length - 1]) {
+        // game over
+        currentRound = 1 
+        isPlaying = false;
+        playerClicked = [];
+        checkingSequence = [];
+        sequence = [];
+        playGame();
+        return 
+      }
+      if (playerClicked.length === checkingSequence.length) {
+        // round passed
+        currentRound += 1;
+        isPlaying = false;
+        playerClicked = [];
+        checkingSequence = [];
+        sequence = [];
+        playGame();
+        return;
+
+      }
     }
     })
   }
