@@ -1,6 +1,7 @@
 
 // access HTML elements/ define them here!
 const startButton = document.getElementById('start');
+const resetButton = document.getElementById('reset');
 const clickables = document.getElementsByClassName('button');
 const audioPack = document.getElementsByClassName('tone');
 
@@ -113,7 +114,13 @@ startButton.addEventListener('click', function(e) {
 })
 
   
-  
+resetButton.addEventListener('click', function(e) {
+  playerClicked = [];
+  checkingSequence = [];
+  sequence = [];
+  currentRound = 1;
+  startButton.innerHTML = currentRound;
+})
 
 
 
