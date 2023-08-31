@@ -3,24 +3,27 @@ body {
 }
 
 .gameBanner {
-  color: lawngreen;
+  color:slategray;
   text-align: center;
   font-size: 100px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin: 30px;
-  background-color: black;
+  background-color:thistle;
+  border-radius: 100%;
 }
 .start {
   width: 150px;
   height: 100px;
   border-radius: 50%;
+  background-color: cornflowerblue;
+  color: white
   
 }
 .reset {
   width: 150px;
   height: 100px;
   border-radius: 50%;
-  background-color:cadetblue;
+  background-color:thistle;
   color: white;
 }
 .button {
